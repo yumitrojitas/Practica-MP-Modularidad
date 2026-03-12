@@ -1,6 +1,6 @@
 01-Main hall-INICIAL-Sala principal de la ESI desde la que se puede acceder al resto del escuela
 02-Puesto Formula Gades-NORMAL-Puesto de admision a la asociacion de Formula Gades
-03-Direccion-NORMAL-Sala donde los profesores mantienen reuniones y guardan todas las llaves de la escuela
+03-Conserjeria-NORMAL-Recepcion de la escuela donde se guardan las llaves
 04-Escalera planta 1-NORMAL-Escaleras de acceso a la primera planta de la escuela
 05-Despacho director-NORMAL-Despacho del director actual de la escuela Luis Lafuente
 06-Cafeteria-NORMAL-Lugar donde los alumnos comen y reponen energia entre clases
@@ -11,4 +11,7 @@
 11-Clase fisica-NORMAL-Aula donde se imparte fisica
 12-Clase mates-NORMAL-Aula donde se imparten matematicas
 13-Clase programacion-NORMAL-Aula donde se imparte programacion
-14-Salida-SALIDA-Puerta de salida al exterior
+14-Armario 1-NORMAL-Armario clase fisica
+15-Armario 2-NORMAL-Armario clase mates
+16-Armario 3-NORMAL-Armario clase programacion
+17-Salida-SALIDA-Puerta de salida al exterior
