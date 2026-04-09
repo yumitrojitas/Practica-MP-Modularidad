@@ -1,67 +1,44 @@
-#ifndef __ACCIONES_H__
-#define __ACCIONES_H__
-#include "jugador.h"
-#include "salas.h"
+#ifndef ACCIONES_H
+#define ACCIONES_H
 
-/* Precondición: jugador inicializado; sala actual válida con objeto id_obj.
+// Declaración de funciones
 
-   Postcondición: el objeto pasa del array de la sala al inventario del jugador. */
+/*
+  Función:      hacer_login
+  Descripcion:  Comprueba las credenciales de un usuario buscando
+                coincidencias de nombre de usuario y contraseña en el sistema.
+  Parámetros:   lista_jugadores - array dinámico de jugadores (entrada)
+                num_jugadores - entero con el total de jugadores (entrada)
+                user - cadena de caracteres con el nombre del usuario (entrada)
+                pass - cadena de caracteres con la contraseña (entrada)
+*/
+Jugador* hacer_login(Jugador** lista_jugadores, int num_jugadores, char* user, char* pass);
 
-void coger_objeto(Jugador *jugador, Sala *sala_actual, char *id_obj);
+/*
+  Función:      id_mayor
+  Descripcion:  Recorre la lista de jugadores para
+                encontrar el identificador ID más grande.
+  Parámetros:   lista_jugadores - array dinámico de jugadores (entrada)
+                num_jugadores - entero con el total de jugadores (entrada)
+*/
+int id_mayor(Jugador** lista_jugadores, int num_jugadores);
 
+/*
+  Función:      guardar_partida
+  Descripcion:  Guarda o actualiza el estado de la partida de un jugador,
+                guardando la sala actual y el estado de los objetos, conexiones
+                y puzles de la sesión.
+  Parámetros:   jugador_actual - puntero al jugador actual (entrada)
+                id_sala_actual - entero con la ID de la sala en la que se encuentra (entrada)
+                lista_partidas - array dinámico de partidas del sistema (entrada)
+                total_partidas - puntero al total de partidas registradas (entrada/salida)
+                lista_objetos_activos - array dinámico de objetos en la sesión (entrada)
+                total_obj - entero con el total de objetos en sesión (entrada)
+                lista_conexiones_activas - array dinámico de conexiones en la sesión (entrada)
+                total_con - entero con el total de conexiones en sesión (entrada)
+                lista_puzles_activos - array dinámico de puzles en la sesión (entrada)
+                total_puz - entero con el total de puzles en sesión (entrada)
+*/
+Partida** guardar_partida(Jugador* jugador_actual, int id_sala_actual, Partida** lista_partidas, int* total_partidas, Objeto** lista_objetos_activos, int total_obj, Conexion** lista_conexiones_activas, int total_con, Puzle** lista_puzles_activos, int total_puz);
 
-/* Precondición: jugador con id_obj en su inventario; sala_actual válida.
-
-   Postcondición: el objeto pasa del inventario a la sala actual. */
-
-void soltar_objeto(Jugador *jugador, Sala *sala_actual, char *id_obj);
-
-
-/* Precondición: jugador y salas inicializadas; id_destino es una sala conectada.
-
-   Postcondición: si la conexión está activa, actualiza la sala actual del jugador.
-   Devuelve 1 si el movimiento tuvo éxito, 0 si la conexión está bloqueada. */
-
-int entrar_sala(Jugador *jugador, Sala *salas, int id_destino);
-
-
-/* Precondición: jugador en sala con un puzle pendiente de id_puzle.
-
-   Postcondición: si la solución es correcta, marca el puzle como resuelto
-   y desbloquea la conexión asociada. Devuelve 1 si es correcto, 0 si no. */
-
-int resolver_puzle(Jugador *jugador, Sala *salas, char *id_puzle, char *solucion);
-
-
-/* Precondición: jugador con id_obj en inventario; conexión adyacente bloqueada.
-
-   Postcondición: si el objeto es la condición de desbloqueo, cambia el estado
-   de la conexión a Activa. Devuelve 1 si se aplicó, 0 si no. */
-
-int usar_objeto(Jugador *jugador, Sala *salas, char *id_obj);
-
-
-/* Precondición: sala_actual válida.
-
-   Postcondición: muestra por pantalla la descripción de la sala
-   e indica si es la sala SALIDA. */
-
-void describir_sala(Sala *sala_actual);
-
-
-/* Precondición: sala_actual válida con sus conexiones cargadas.
-
-   Postcondición: lista por pantalla los objetos de la sala
-   y las salidas indicando si están bloqueadas o no. */
-
-void examinar_sala(Sala *sala_actual);
-
-
-/* Precondición: jugador inicializado con inventario cargado.
-
-   Postcondición: muestra por pantalla los objetos del inventario
-   con sus descripciones. */
-   
-void mostrar_inventario(Jugador *jugador);
-
-#endif
+#endif // ACCIONES_H
